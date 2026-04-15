@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Terms of Service — Sirius</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Instrument+Serif:ital,wght@0,400;1,400&display=swap" rel="stylesheet"/>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --text: #0a0a0a; --sub: #6b7280; --muted: #9ca3af;
+  --border: #e5e7eb; --light: #f9fafb; --white: #ffffff;
+  --pad-x: 3.5rem;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--text); overflow-x: hidden; }
+
+nav {
+  position: sticky; top: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 var(--pad-x); height: 58px;
+  background: rgba(255,255,255,0.95); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.logo { display: flex; align-items: center; gap: 9px; text-decoration: none; }
+.logo-word { font-family: 'Instrument Serif', serif; font-size: 1.2rem; color: var(--text); letter-spacing: -0.01em; }
+.nav-back { font-size: 0.82rem; color: var(--sub); text-decoration: none; transition: color 0.2s; }
+.nav-back:hover { color: var(--text); }
+
+.page-header { padding: 5rem var(--pad-x) 3.5rem; border-bottom: 1px solid var(--border); }
+.page-label { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; }
+.page-title { font-family: 'Instrument Serif', serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 400; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 1rem; }
+.page-meta { font-size: 0.82rem; color: var(--muted); }
+
+.content { max-width: 720px; margin: 0 auto; padding: 4rem var(--pad-x) 6rem; }
+.section { margin-bottom: 3rem; }
+.section:last-child { margin-bottom: 0; }
+
+h2 { font-family: 'Instrument Serif', serif; font-size: 1.4rem; font-weight: 400; letter-spacing: -0.01em; margin-bottom: 1rem; padding-top: 2rem; border-top: 1px solid var(--border); }
+.section:first-child h2 { border-top: none; padding-top: 0; }
+
+p { font-size: 0.9rem; color: var(--sub); line-height: 1.85; font-weight: 300; margin-bottom: 0.85rem; }
+p:last-child { margin-bottom: 0; }
+p strong { color: var(--text); font-weight: 500; }
+
+ul { list-style: none; margin: 0.5rem 0 0.85rem; display: flex; flex-direction: column; gap: 0.5rem; }
+ul li { font-size: 0.9rem; color: var(--sub); line-height: 1.7; font-weight: 300; padding-left: 1.25rem; position: relative; }
+ul li::before { content: '—'; position: absolute; left: 0; color: var(--muted); font-size: 0.8rem; }
+
+a { color: var(--text); }
+
+footer { border-top: 1px solid var(--border); padding: 1.75rem var(--pad-x); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+.footer-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+.footer-word { font-family: 'Instrument Serif', serif; font-size: 0.95rem; color: var(--muted); }
+.footer-copy { font-size: 0.75rem; color: var(--muted); }
+.footer-links { display: flex; gap: 1.5rem; }
+.footer-links a { font-size: 0.75rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: var(--sub); }
+
+@media (max-width: 768px) {
+  :root { --pad-x: 1.5rem; }
+  footer { flex-direction: column; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+      <path d="M10 1 L11.4 8.6 L19 10 L11.4 11.4 L10 19 L8.6 11.4 L1 10 L8.6 8.6 Z" fill="#0a0a0a"/>
+    </svg>
+    <span class="logo-word">sirius</span>
+  </a>
+  <a href="/" class="nav-back">← Back to Sirius</a>
+</nav>
+
+<div class="page-header">
+  <p class="page-label">Legal</p>
+  <h1 class="page-title">Terms of Service</h1>
+  <p class="page-meta">Last updated: April 15, 2025 · Effective: April 15, 2025</p>
+</div>
+
+<div class="content">
+
+  <div class="section">
+    <h2>Agreement to Terms</h2>
+    <p>These Terms of Service ("Terms") govern your access to and use of the Sirius platform and its products — including Orbit, Vett, and Rounds — operated by Sirius AI ("Sirius," "we," "us," or "our").</p>
+    <p>By creating an account or using any part of our Services, you agree to be bound by these Terms. If you do not agree, you may not use the Services. If you are using the Services on behalf of an organization, you represent that you have authority to bind that organization to these Terms.</p>
+  </div>
+
+  <div class="section">
+    <h2>Eligibility</h2>
+    <p>You must be at least 16 years old to use the Services. By using the Services, you represent and warrant that you meet this age requirement. If you are under 18, you represent that your parent or legal guardian has reviewed and agrees to these Terms on your behalf.</p>
+    <p>The Services are not available to individuals who have previously been suspended or removed from the Services by Sirius.</p>
+  </div>
+
+  <div class="section">
+    <h2>Your Account</h2>
+    <p>To access most features of the Services, you must create a Sirius account. You agree to:</p>
+    <ul>
+      <li>Provide accurate, current, and complete information during registration</li>
+      <li>Maintain the security of your password and not share it with others</li>
+      <li>Notify us immediately of any unauthorized use of your account</li>
+      <li>Accept responsibility for all activity that occurs under your account</li>
+    </ul>
+    <p>One Sirius account gives you access to all Sirius products. You may not create more than one account per person. We reserve the right to suspend or terminate accounts that appear to be duplicates or created for fraudulent purposes.</p>
+  </div>
+
+  <div class="section">
+    <h2>Acceptable Use</h2>
+    <p>You agree to use the Services only for lawful purposes and in accordance with these Terms. You agree not to:</p>
+    <ul>
+      <li>Use the Services to harass, threaten, or harm any person</li>
+      <li>Submit false, misleading, or fraudulent information — including fake resumes, fabricated credentials, or AI-generated content passed off as your own work</li>
+      <li>Attempt to access any part of the Services you are not authorized to access</li>
+      <li>Scrape, crawl, or extract data from the Services using automated means without our express written permission</li>
+      <li>Reverse engineer, decompile, or disassemble any part of the Services</li>
+      <li>Use the Services to send unsolicited communications or spam</li>
+      <li>Upload or transmit viruses, malware, or any other harmful code</li>
+      <li>Interfere with or disrupt the integrity or performance of the Services</li>
+      <li>Use the Services in any way that violates applicable laws or regulations</li>
+      <li>Impersonate any person or entity or misrepresent your affiliation with any person or entity</li>
+    </ul>
+    <p>Sirius reserves the right to investigate violations of these Terms and may suspend or terminate your account for any breach, with or without notice.</p>
+  </div>
+
+  <div class="section">
+    <h2>AI-Generated Content</h2>
+    <p>The Services use AI systems to generate content such as resume reviews, cover letters, candidate summaries, and scoring assessments. You acknowledge that:</p>
+    <ul>
+      <li>AI-generated content may contain errors, inaccuracies, or omissions</li>
+      <li>AI-generated content is provided for informational and assistive purposes only</li>
+      <li>You are responsible for reviewing all AI-generated content before using or submitting it</li>
+      <li>Sirius does not guarantee that AI-generated content will be accurate, complete, or suitable for any particular purpose</li>
+      <li>Submitting AI-generated content as your own original work to third parties (such as employers) without disclosure is your responsibility and may have consequences beyond our control</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Vett — Recruiter Terms</h2>
+    <p>If you use Vett as a recruiter, you additionally agree to:</p>
+    <ul>
+      <li>Use candidate information only for the purpose of evaluating candidates for legitimate employment opportunities</li>
+      <li>Not discriminate against candidates on the basis of race, color, religion, sex, national origin, age, disability, or any other protected characteristic</li>
+      <li>Comply with all applicable employment laws, including those governing equal opportunity employment and data privacy</li>
+      <li>Not use candidate contact information for any purpose other than the hiring process for which it was obtained</li>
+      <li>Handle candidate data with care and not share it with unauthorized third parties</li>
+    </ul>
+    <p>Sirius provides sourcing and screening tools. We are not an employment agency and do not guarantee the quality, suitability, or availability of any candidate surfaced by the Services.</p>
+  </div>
+
+  <div class="section">
+    <h2>Orbit — Candidate Visibility</h2>
+    <p>If you use Orbit and opt in to recruiter discovery, you consent to your profile information being visible to Vett users who are actively hiring for roles matching your profile. You can withdraw this consent at any time from your account settings. Withdrawal takes effect within 24 hours.</p>
+    <p>Sirius does not guarantee that opting in will result in any recruiter contact or employment opportunity.</p>
+  </div>
+
+  <div class="section">
+    <h2>Subscriptions and Billing</h2>
+    <p>Some features of the Services require a paid subscription. By subscribing, you agree to pay the applicable fees as described on the pricing page at the time of your purchase.</p>
+    <ul>
+      <li><strong>Billing.</strong> Subscriptions are billed on a monthly or annual basis, depending on the plan selected. Your subscription will automatically renew unless you cancel before the renewal date.</li>
+      <li><strong>Cancellation.</strong> You may cancel your subscription at any time from your account settings. Cancellation takes effect at the end of the current billing period. You will retain access to paid features until then.</li>
+      <li><strong>Refunds.</strong> We do not offer refunds for partial months or unused time. If you believe you were charged in error, contact us within 14 days at <a href="mailto:samleebu12@gmail.com">samleebu12@gmail.com</a>.</li>
+      <li><strong>Price changes.</strong> We may change subscription prices at any time. We will give you at least 30 days' notice before any price change takes effect on your existing subscription.</li>
+      <li><strong>Credits.</strong> Credits purchased within the Services are non-refundable and have no cash value. Unused credits expire if your account is closed.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Intellectual Property</h2>
+    <p><strong>Sirius content.</strong> The Services and their original content, features, and functionality are owned by Sirius AI and are protected by intellectual property laws. You may not copy, modify, distribute, or create derivative works from our content without our written permission.</p>
+    <p><strong>Your content.</strong> You retain ownership of any content you submit to the Services — including your resume, profile information, and any other materials. By submitting content to the Services, you grant Sirius a limited, non-exclusive, royalty-free license to use, store, and process that content solely to provide the Services to you. We do not use your content to train AI models.</p>
+    <p><strong>Feedback.</strong> If you provide us with feedback or suggestions about the Services, we may use that feedback without any obligation to you.</p>
+  </div>
+
+  <div class="section">
+    <h2>Disclaimers</h2>
+    <p>The Services are provided "as is" and "as available" without warranties of any kind, either express or implied. Sirius does not warrant that:</p>
+    <ul>
+      <li>The Services will be uninterrupted, error-free, or secure</li>
+      <li>Any results obtained from using the Services will be accurate or reliable</li>
+      <li>AI-generated content will be suitable for any particular purpose</li>
+      <li>Using the Services will result in employment, hiring success, or any other specific outcome</li>
+    </ul>
+    <p>Your use of the Services is at your sole risk. To the fullest extent permitted by law, Sirius disclaims all warranties, express or implied, including warranties of merchantability, fitness for a particular purpose, and non-infringement.</p>
+  </div>
+
+  <div class="section">
+    <h2>Limitation of Liability</h2>
+    <p>To the maximum extent permitted by applicable law, Sirius and its officers, directors, employees, and agents shall not be liable for any indirect, incidental, special, consequential, or punitive damages — including loss of profits, data, or goodwill — arising from your use of or inability to use the Services.</p>
+    <p>In no event shall Sirius's total liability to you for all claims arising from or relating to the Services exceed the greater of (a) the amount you paid to Sirius in the 12 months preceding the claim, or (b) $100 USD.</p>
+    <p>Some jurisdictions do not allow certain limitations of liability, so the above may not apply to you in full.</p>
+  </div>
+
+  <div class="section">
+    <h2>Termination</h2>
+    <p>You may stop using the Services and delete your account at any time. We may suspend or terminate your access to the Services at any time, with or without cause, with or without notice — including if we believe you have violated these Terms.</p>
+    <p>Upon termination, your right to use the Services will immediately cease. Provisions of these Terms that by their nature should survive termination — including ownership, disclaimers, limitation of liability, and dispute resolution — shall survive.</p>
+  </div>
+
+  <div class="section">
+    <h2>Governing Law</h2>
+    <p>These Terms are governed by the laws of the United States, without regard to conflict of law principles. Any disputes arising from these Terms or the Services shall be resolved in the courts located in the United States, and you consent to personal jurisdiction in those courts.</p>
+  </div>
+
+  <div class="section">
+    <h2>Changes to These Terms</h2>
+    <p>We may update these Terms from time to time. When we make material changes, we will notify you by email or by posting a notice on the Services at least 14 days before the changes take effect. Your continued use of the Services after the effective date constitutes your acceptance of the updated Terms.</p>
+    <p>If you do not agree to the updated Terms, you must stop using the Services before the effective date.</p>
+  </div>
+
+  <div class="section">
+    <h2>Contact Us</h2>
+    <p>If you have questions about these Terms, please contact us:</p>
+    <ul>
+      <li>Email: <a href="mailto:samleebu12@gmail.com">samleebu12@gmail.com</a></li>
+      <li>Website: <a href="https://sirius-ai.co">sirius-ai.co</a></li>
+    </ul>
+  </div>
+
+</div>
+
+<footer>
+  <a href="/" class="footer-logo">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+      <path d="M7 1 L8 5.6 L13 7 L8 8.4 L7 13 L6 8.4 L1 7 L6 5.6 Z" fill="#9ca3af"/>
+    </svg>
+    <span class="footer-word">sirius</span>
+  </a>
+  <span class="footer-copy">© 2025 Sirius AI. All rights reserved.</span>
+  <div class="footer-links">
+    <a href="/privacy">Privacy</a>
+    <a href="/terms">Terms</a>
+    <a href="/contact">Contact</a>
+  </div>
+</footer>
+
+</body>
+</html>
