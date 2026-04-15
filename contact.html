@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Contact — Sirius</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Instrument+Serif:ital,wght@0,400;1,400&display=swap" rel="stylesheet"/>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --text: #0a0a0a; --sub: #6b7280; --muted: #9ca3af;
+  --border: #e5e7eb; --light: #f9fafb; --white: #ffffff;
+  --pad-x: 3.5rem;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--text); overflow-x: hidden; }
+
+nav {
+  position: sticky; top: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 var(--pad-x); height: 58px;
+  background: rgba(255,255,255,0.95); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.logo { display: flex; align-items: center; gap: 9px; text-decoration: none; }
+.logo-word { font-family: 'Instrument Serif', serif; font-size: 1.2rem; color: var(--text); letter-spacing: -0.01em; }
+.nav-back { font-size: 0.82rem; color: var(--sub); text-decoration: none; transition: color 0.2s; }
+.nav-back:hover { color: var(--text); }
+
+/* ── LAYOUT ───────────────────────────────────────────────── */
+.page {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: calc(100vh - 58px);
+}
+
+.page-left {
+  padding: 5rem var(--pad-x);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.page-label { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; }
+.page-title { font-family: 'Instrument Serif', serif; font-size: clamp(2.5rem, 4vw, 3.75rem); font-weight: 400; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 1.5rem; }
+.page-title em { font-style: italic; }
+.page-body { font-size: 0.9rem; color: var(--sub); line-height: 1.85; font-weight: 300; max-width: 380px; margin-bottom: 3rem; }
+
+.contact-options { display: flex; flex-direction: column; gap: 0; }
+.contact-option {
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.contact-option:last-child { border-bottom: 1px solid var(--border); }
+.contact-type { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+.contact-value { font-size: 0.95rem; color: var(--text); text-decoration: none; transition: opacity 0.2s; }
+.contact-value:hover { opacity: 0.6; }
+.contact-note { font-size: 0.78rem; color: var(--muted); font-weight: 300; }
+
+.left-footer { font-size: 0.75rem; color: var(--muted); }
+
+/* ── FORM ─────────────────────────────────────────────────── */
+.page-right {
+  padding: 5rem var(--pad-x);
+  background: var(--light);
+}
+
+.form-title { font-family: 'Instrument Serif', serif; font-size: 1.5rem; font-weight: 400; margin-bottom: 0.5rem; letter-spacing: -0.01em; }
+.form-sub { font-size: 0.85rem; color: var(--sub); margin-bottom: 2.5rem; font-weight: 300; }
+
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+.form-field { display: flex; flex-direction: column; gap: 5px; margin-bottom: 1rem; }
+.form-field.full { grid-column: 1 / -1; }
+
+label { font-size: 0.75rem; font-weight: 500; color: var(--sub); }
+input, textarea, select {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem; font-weight: 300;
+  background: var(--white);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 7px;
+  padding: 0.65rem 0.9rem;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.2s;
+}
+input:focus, textarea:focus, select:focus { border-color: #6b7280; }
+textarea { min-height: 130px; resize: vertical; line-height: 1.6; }
+select { cursor: pointer; }
+
+.submit-btn {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem; font-weight: 500;
+  color: var(--white); background: var(--text);
+  border: none; cursor: pointer;
+  padding: 0.75rem 1.5rem;
+  border-radius: 7px;
+  transition: opacity 0.2s;
+  display: inline-flex; align-items: center; gap: 8px;
+  margin-top: 0.5rem;
+}
+.submit-btn:hover { opacity: 0.8; }
+.submit-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+.form-msg { font-size: 0.82rem; margin-top: 1rem; line-height: 1.5; }
+.form-ok    { color: #16a34a; }
+.form-error { color: #dc2626; }
+.form-note  { font-size: 0.72rem; color: var(--muted); margin-top: 0.75rem; font-weight: 300; }
+
+/* ── FOOTER ───────────────────────────────────────────────── */
+footer { border-top: 1px solid var(--border); padding: 1.75rem var(--pad-x); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+.footer-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+.footer-word { font-family: 'Instrument Serif', serif; font-size: 0.95rem; color: var(--muted); }
+.footer-copy { font-size: 0.75rem; color: var(--muted); }
+.footer-links { display: flex; gap: 1.5rem; }
+.footer-links a { font-size: 0.75rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: var(--sub); }
+
+@media (max-width: 900px) {
+  :root { --pad-x: 1.5rem; }
+  .page { grid-template-columns: 1fr; }
+  .page-left { border-right: none; border-bottom: 1px solid var(--border); padding: 3rem 1.5rem; }
+  .page-right { padding: 3rem 1.5rem; background: var(--white); }
+  .form-grid { grid-template-columns: 1fr; }
+  footer { flex-direction: column; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+      <path d="M10 1 L11.4 8.6 L19 10 L11.4 11.4 L10 19 L8.6 11.4 L1 10 L8.6 8.6 Z" fill="#0a0a0a"/>
+    </svg>
+    <span class="logo-word">sirius</span>
+  </a>
+  <a href="/" class="nav-back">← Back to Sirius</a>
+</nav>
+
+<div class="page">
+
+  <!-- LEFT -->
+  <div class="page-left">
+    <div>
+      <p class="page-label">Contact</p>
+      <h1 class="page-title">Let's talk<br/><em>directly.</em></h1>
+      <p class="page-body">Whether you have a question about a product, want to discuss a partnership, or just want to know more about what we're building — reach out. We read every message and respond within one business day.</p>
+
+      <div class="contact-options">
+        <div class="contact-option">
+          <span class="contact-type">General inquiries</span>
+          <a href="mailto:samleebu12@gmail.com" class="contact-value">samleebu12@gmail.com</a>
+          <span class="contact-note">Questions, feedback, anything else</span>
+        </div>
+        <div class="contact-option">
+          <span class="contact-type">Enterprise & Partnerships</span>
+          <a href="mailto:samleebu12@gmail.com" class="contact-value">samleebu12@gmail.com</a>
+          <span class="contact-note">Healthcare integrations, B2B licensing, partnerships</span>
+        </div>
+        <div class="contact-option">
+          <span class="contact-type">Support</span>
+          <a href="mailto:samleebu12@gmail.com" class="contact-value">samleebu12@gmail.com</a>
+          <span class="contact-note">Account issues, billing, technical problems</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="left-footer">We're a small team. No bots, no ticket queues — just people who care about the product.</p>
+  </div>
+
+  <!-- RIGHT -->
+  <div class="page-right">
+    <h2 class="form-title">Send us a message</h2>
+    <p class="form-sub">Fill out the form and we'll get back to you within one business day.</p>
+
+    <div class="form-grid">
+      <div class="form-field">
+        <label for="fname">First name</label>
+        <input type="text" id="fname" placeholder="Samuel"/>
+      </div>
+      <div class="form-field">
+        <label for="lname">Last name</label>
+        <input type="text" id="lname" placeholder="Lee"/>
+      </div>
+    </div>
+
+    <div class="form-field">
+      <label for="email">Email address</label>
+      <input type="email" id="email" placeholder="you@example.com"/>
+    </div>
+
+    <div class="form-field">
+      <label for="subject">Subject</label>
+      <select id="subject">
+        <option value="" disabled selected>Select a topic</option>
+        <option value="general">General question</option>
+        <option value="orbit">Orbit — job seeking</option>
+        <option value="vett">Vett — recruiting</option>
+        <option value="rounds">Rounds — healthcare</option>
+        <option value="enterprise">Enterprise & Partnerships</option>
+        <option value="billing">Billing & Subscriptions</option>
+        <option value="bug">Bug report</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+
+    <div class="form-field">
+      <label for="message">Message</label>
+      <textarea id="message" placeholder="Tell us what's on your mind…"></textarea>
+    </div>
+
+    <button class="submit-btn" id="submitBtn" onclick="submitForm()">
+      Send message
+      <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M1 6.5h11M7 2l4.5 4.5L7 11" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+
+    <div id="formMsg"></div>
+    <p class="form-note">We respond to every message within one business day. For urgent issues, email us directly.</p>
+  </div>
+
+</div>
+
+<footer>
+  <a href="/" class="footer-logo">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+      <path d="M7 1 L8 5.6 L13 7 L8 8.4 L7 13 L6 8.4 L1 7 L6 5.6 Z" fill="#9ca3af"/>
+    </svg>
+    <span class="footer-word">sirius</span>
+  </a>
+  <span class="footer-copy">© 2025 Sirius AI. All rights reserved.</span>
+  <div class="footer-links">
+    <a href="/privacy">Privacy</a>
+    <a href="/terms">Terms</a>
+    <a href="/contact">Contact</a>
+  </div>
+</footer>
+
+<script>
+async function submitForm() {
+  const fname   = document.getElementById('fname').value.trim();
+  const lname   = document.getElementById('lname').value.trim();
+  const email   = document.getElementById('email').value.trim();
+  const subject = document.getElementById('subject').value;
+  const message = document.getElementById('message').value.trim();
+  const btn     = document.getElementById('submitBtn');
+  const msg     = document.getElementById('formMsg');
+
+  if (!fname || !email || !subject || !message) {
+    msg.innerHTML = '<p class="form-msg form-error">Please fill in all required fields.</p>';
+    return;
+  }
+
+  // Email validation
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    msg.innerHTML = '<p class="form-msg form-error">Please enter a valid email address.</p>';
+    return;
+  }
+
+  btn.disabled = true;
+  btn.innerHTML = 'Sending…';
+  msg.innerHTML = '';
+
+  // Send via mailto as fallback (replace with your email API when ready)
+  const mailtoLink = `mailto:samleebu12@gmail.com?subject=${encodeURIComponent(`[Sirius Contact] ${subject} — ${fname} ${lname}`)}&body=${encodeURIComponent(`From: ${fname} ${lname}\nEmail: ${email}\nSubject: ${subject}\n\n${message}`)}`;
+
+  // Simulate send (replace with fetch to your email endpoint when ready)
+  setTimeout(() => {
+    msg.innerHTML = '<p class="form-msg form-ok">Message received — we\'ll get back to you within one business day.</p>';
+    btn.disabled = false;
+    btn.innerHTML = `Send message <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M1 6.5h11M7 2l4.5 4.5L7 11" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+    document.getElementById('fname').value = '';
+    document.getElementById('lname').value = '';
+    document.getElementById('email').value = '';
+    document.getElementById('subject').value = '';
+    document.getElementById('message').value = '';
+    // Open mailto as fallback
+    window.location.href = mailtoLink;
+  }, 800);
+}
+
+// Allow Enter in fields to move forward
+document.addEventListener('keydown', e => {
+  if (e.key === 'Enter' && e.target.tagName !== 'TEXTAREA') {
+    const fields = ['fname', 'lname', 'email', 'message'];
+    const idx = fields.indexOf(e.target.id);
+    if (idx > -1 && idx < fields.length - 1) {
+      document.getElementById(fields[idx + 1]).focus();
+    }
+  }
+});
+</script>
+
+</body>
+</html>
