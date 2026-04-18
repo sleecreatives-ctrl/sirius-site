@@ -3,297 +3,118 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Sirius — AI for the Real World</title>
-<meta name="description" content="Sirius builds AI tools for the industries that matter most — healthcare, hiring, and career development."/>
+<title>Sirius — AI for the real world.</title>
+<meta name="description" content="Sirius builds AI tools for healthcare, hiring, and career development."/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Instrument+Serif:ital,wght@0,400;1,400&display=swap" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
 :root {
-  --text:     #0a0a0a;
-  --sub:      #6b7280;
-  --muted:    #9ca3af;
-  --border:   #e5e7eb;
-  --light:    #f9fafb;
-  --white:    #ffffff;
-
-  --career:   #00a86b;
-  --hire:     #2563eb;
-  --health:   #0891b2;
-  --growth:   #d97706;
-
-  --pad-x: 3.5rem;
+  --text: #0a0a0a; --sub: #6b7280; --muted: #9ca3af;
+  --border: #e5e7eb; --white: #ffffff; --light: #f9fafb;
 }
-
 html { scroll-behavior: smooth; }
-body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--text); overflow-x: hidden; }
-img, svg { display: block; }
+body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--text); }
 
-/* ── NAV ──────────────────────────────────────────────────────── */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   display: flex; align-items: center; justify-content: space-between;
-  padding: 0 var(--pad-x); height: 58px;
-  background: rgba(255,255,255,0.95);
-  backdrop-filter: blur(12px);
+  padding: 0 2.5rem; height: 56px;
+  background: rgba(255,255,255,.95); backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
 }
-.logo { display: flex; align-items: center; gap: 9px; text-decoration: none; }
-.logo-word { font-family: 'Instrument Serif', serif; font-size: 1.2rem; color: var(--text); letter-spacing: -0.01em; }
-.nav-btn { font-family: 'Inter', sans-serif; font-size: 0.82rem; font-weight: 500; background: var(--text); color: var(--white); border: none; cursor: pointer; padding: 0.5rem 1.1rem; border-radius: 5px; transition: opacity 0.2s; }
+.logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+.logo-word { font-family: 'Instrument Serif', serif; font-size: 1.15rem; color: var(--text); }
+.nav-btn { font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: 500; color: var(--white); background: var(--text); border: none; cursor: pointer; padding: 0.45rem 1rem; border-radius: 5px; }
 .nav-btn:hover { opacity: 0.8; }
-.nav-signed-in { display: flex; align-items: center; gap: 0.75rem; }
-.nav-user { font-size: 0.82rem; color: var(--sub); }
-.nav-signout { font-family: 'Inter', sans-serif; font-size: 0.82rem; color: var(--sub); background: none; border: none; cursor: pointer; padding: 0.4rem 0.75rem; border-radius: 5px; transition: background 0.2s; }
-.nav-signout:hover { background: var(--light); color: var(--text); }
 
-/* ── HERO ─────────────────────────────────────────────────────── */
-.hero {
-  padding: 6rem var(--pad-x) 5rem;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0;
-  align-items: end;
-  border-bottom: 1px solid var(--border);
-  
-}
-
-.hero-left { padding-right: 4rem; }
-
-.hero-eyebrow {
-  font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em;
-  text-transform: uppercase; color: var(--muted);
-  margin-bottom: 2rem;
-  display: flex; align-items: center; gap: 10px;
-}
-.hero-eyebrow::after { content: ''; flex: 0 0 32px; height: 1px; background: var(--border); }
-
+/* HERO */
+.hero { padding: 14rem 2.5rem 10rem; max-width: 900px; margin: 0 auto; }
 .hero h1 {
   font-family: 'Instrument Serif', serif;
-  font-size: clamp(3rem, 5.5vw, 5.25rem);
-  font-weight: 400;
-  line-height: 1.06;
-  letter-spacing: -0.02em;
-  color: var(--text);
+  font-size: clamp(3.5rem, 7vw, 6.5rem);
+  font-weight: 400; line-height: 1.04;
+  letter-spacing: -0.025em;
+  margin-bottom: 2rem;
 }
 .hero h1 em { font-style: italic; }
+.hero p { font-size: 1.05rem; color: var(--sub); font-weight: 300; line-height: 1.75; max-width: 440px; margin-bottom: 2.5rem; }
+.hero-actions { display: flex; align-items: center; gap: 1rem; }
+.btn-primary { font-family: 'Inter', sans-serif; font-size: 0.875rem; font-weight: 500; color: var(--white); background: var(--text); border: none; cursor: pointer; padding: 0.75rem 1.5rem; border-radius: 6px; }
+.btn-primary:hover { opacity: 0.8; }
+.btn-ghost { font-family: 'Inter', sans-serif; font-size: 0.875rem; color: var(--sub); background: none; border: none; cursor: pointer; }
+.btn-ghost:hover { color: var(--text); }
 
-.hero-right {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding-left: 4rem;
-  border-left: 1px solid var(--border);
-  padding-bottom: 0.25rem;
-}
-
-.hero-body {
-  font-size: 1rem; color: var(--sub);
-  font-weight: 300; line-height: 1.8;
-  margin-bottom: 2.5rem;
-  max-width: 400px;
-}
-
-.hero-cta {
-  display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
-}
-.btn-dark { font-family: 'Inter', sans-serif; font-size: 0.875rem; font-weight: 500; color: var(--white); background: var(--text); border: none; cursor: pointer; padding: 0.75rem 1.5rem; border-radius: 6px; transition: opacity 0.2s; display: inline-flex; align-items: center; gap: 7px; }
-.btn-dark:hover { opacity: 0.8; }
-.btn-text { font-family: 'Inter', sans-serif; font-size: 0.875rem; color: var(--sub); background: none; border: none; cursor: pointer; transition: color 0.2s; }
-.btn-text:hover { color: var(--text); }
-
-.hero-note { font-size: 0.72rem; color: var(--muted); margin-top: 0.85rem; }
-
-/* ── TICKER ───────────────────────────────────────────────────── */
-.ticker {
+/* PRODUCTS */
+.products { border-top: 1px solid var(--border); }
+.product {
+  display: grid; grid-template-columns: 2fr 1fr 1fr;
+  align-items: center; gap: 2rem;
+  padding: 2rem 2.5rem;
   border-bottom: 1px solid var(--border);
-  padding: 1rem var(--pad-x);
-  display: flex; align-items: center; gap: 3rem;
-  overflow: hidden;
+  text-decoration: none; color: inherit;
+  transition: background 0.15s;
 }
-.ticker-label { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); flex-shrink: 0; }
-.ticker-items { display: flex; gap: 3rem; align-items: center; }
-.ticker-item { font-size: 0.82rem; color: var(--sub); white-space: nowrap; display: flex; align-items: center; gap: 7px; }
-.ticker-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+.product:hover { background: var(--light); }
+.product.dim { opacity: 0.4; cursor: default; }
+.product.dim:hover { background: var(--white); }
+.product-name { font-family: 'Instrument Serif', serif; font-size: 1.5rem; font-weight: 400; }
+.product-desc { font-size: 0.85rem; color: var(--sub); font-weight: 300; line-height: 1.6; }
+.product-tag { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.product-status { font-size: 0.72rem; color: var(--muted); text-align: right; }
+.dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; margin-right: 5px; vertical-align: middle; }
 
-/* ── PRODUCTS ─────────────────────────────────────────────────── */
-.products { border-bottom: 1px solid var(--border); }
-
-.product-row {
-  display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
-  align-items: center;
-  padding: 3rem var(--pad-x);
-  border-bottom: 1px solid var(--border);
-  transition: background 0.2s;
-  text-decoration: none;
-  color: inherit;
-  gap: 3rem;
-}
-.product-row:last-child { border-bottom: none; }
-.product-row:hover { background: var(--light); }
-.product-row.unavailable { cursor: default; }
-.product-row.unavailable:hover { background: var(--white); }
-
-.product-index { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.1em; }
-
-.product-main { display: flex; align-items: center; gap: 1.75rem; }
-.product-star {
-  width: 44px; height: 44px; border-radius: 10px;
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
-}
-.product-name-wrap {}
-.product-name {
-  font-family: 'Instrument Serif', serif;
-  font-size: 1.75rem; font-weight: 400;
-  letter-spacing: -0.01em;
-  line-height: 1.1;
-}
-.product-tag { font-size: 0.75rem; color: var(--muted); margin-top: 3px; }
-
-.product-right { display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
-.product-desc { font-size: 0.875rem; color: var(--sub); line-height: 1.7; font-weight: 300; max-width: 360px; }
-.product-status {
-  font-size: 0.72rem; font-weight: 500; letter-spacing: 0.08em;
-  text-transform: uppercase; flex-shrink: 0;
-  padding: 4px 10px; border-radius: 4px;
-}
-.status-live    { background: rgba(0,168,107,0.1); color: #00a86b; }
-.status-building{ background: rgba(8,145,178,0.1);  color: #0891b2; }
-
-/* ── STATEMENT ─────────────────────────────────────────────────── */
-.statement {
-  padding: 8rem var(--pad-x);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 5rem;
-  border-bottom: 1px solid var(--border);
-  align-items: center;
-}
-.statement-left {}
-.statement-label { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.75rem; }
-.statement h2 {
-  font-family: 'Instrument Serif', serif;
-  font-size: clamp(2rem, 3.5vw, 3.25rem);
-  font-weight: 400; line-height: 1.15;
-  letter-spacing: -0.015em;
-}
-.statement h2 em { font-style: italic; }
-
-.statement-right {}
-.statement-body { font-size: 0.95rem; color: var(--sub); line-height: 1.85; font-weight: 300; }
-.statement-body p { margin-bottom: 1.25rem; }
-.statement-body p:last-child { margin-bottom: 0; }
-.statement-body strong { color: var(--text); font-weight: 500; }
-
-/* ── METRICS ──────────────────────────────────────────────────── */
-.metrics {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  border-bottom: 1px solid var(--border);
-}
-.metric {
-  padding: 3.5rem var(--pad-x);
-  border-right: 1px solid var(--border);
-}
-.metric:last-child { border-right: none; }
-.metric-num {
-  font-family: 'Instrument Serif', serif;
-  font-size: 2.75rem; font-weight: 400;
-  line-height: 1; margin-bottom: 0.5rem;
-  letter-spacing: -0.02em;
-}
-.metric-label { font-size: 0.8rem; color: var(--sub); line-height: 1.55; font-weight: 300; }
-
-/* ── CLOSING ──────────────────────────────────────────────────── */
-.closing {
-  padding: 8rem var(--pad-x);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 5rem;
-  align-items: center;
-  border-bottom: 1px solid var(--border);
-}
-.closing h2 {
-  font-family: 'Instrument Serif', serif;
-  font-size: clamp(2.25rem, 4vw, 3.75rem);
-  font-weight: 400; line-height: 1.1;
-  letter-spacing: -0.02em;
-}
-.closing h2 em { font-style: italic; }
-.closing-right { display: flex; flex-direction: column; gap: 1.5rem; }
-.closing-body { font-size: 0.95rem; color: var(--sub); line-height: 1.8; font-weight: 300; }
-.closing-actions { display: flex; align-items: center; gap: 1rem; }
-.closing-note { font-size: 0.72rem; color: var(--muted); }
-
-/* ── FOOTER ───────────────────────────────────────────────────── */
+/* FOOTER */
 footer {
-  padding: 1.75rem var(--pad-x);
+  padding: 2rem 2.5rem;
   display: flex; align-items: center; justify-content: space-between;
-  flex-wrap: wrap; gap: 1rem;
+  border-top: 1px solid var(--border);
 }
-.footer-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
-.footer-word { font-family: 'Instrument Serif', serif; font-size: 0.95rem; color: var(--muted); }
-.footer-copy { font-size: 0.75rem; color: var(--muted); }
+.footer-logo { display: flex; align-items: center; gap: 7px; text-decoration: none; }
+.footer-word { font-family: 'Instrument Serif', serif; font-size: 0.9rem; color: var(--muted); }
 .footer-links { display: flex; gap: 1.5rem; }
-.footer-links a { font-size: 0.75rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+.footer-links a { font-size: 0.75rem; color: var(--muted); text-decoration: none; }
 .footer-links a:hover { color: var(--sub); }
+.footer-copy { font-size: 0.75rem; color: var(--muted); }
 
-/* ── AUTH MODAL ───────────────────────────────────────────────── */
-.overlay { display: none; position: fixed; inset: 0; z-index: 300; background: rgba(0,0,0,0.3); backdrop-filter: blur(6px); align-items: center; justify-content: center; }
+/* AUTH MODAL */
+.overlay { display: none; position: fixed; inset: 0; z-index: 300; background: rgba(0,0,0,.25); backdrop-filter: blur(6px); align-items: center; justify-content: center; }
 .overlay.open { display: flex; }
-.modal { background: var(--white); border-radius: 14px; padding: 2.5rem; width: 100%; max-width: 400px; margin: 1.25rem; position: relative; box-shadow: 0 20px 60px rgba(0,0,0,0.12); }
-.modal-x { position: absolute; top: 14px; right: 14px; width: 28px; height: 28px; border-radius: 50%; background: var(--light); border: none; cursor: pointer; font-size: 1rem; color: var(--sub); display: flex; align-items: center; justify-content: center; }
-.modal-x:hover { background: var(--border); }
-.m-title { font-family: 'Instrument Serif', serif; font-size: 1.5rem; font-weight: 400; margin-bottom: 0.3rem; letter-spacing: -0.01em; }
+.modal { background: var(--white); border-radius: 14px; padding: 2.5rem; width: 100%; max-width: 380px; margin: 1.25rem; position: relative; box-shadow: 0 20px 60px rgba(0,0,0,.1); border: 1px solid var(--border); }
+.modal-x { position: absolute; top: 14px; right: 14px; width: 26px; height: 26px; border-radius: 50%; background: var(--light); border: none; cursor: pointer; font-size: 1rem; color: var(--sub); display: flex; align-items: center; justify-content: center; }
+.m-title { font-family: 'Instrument Serif', serif; font-size: 1.4rem; font-weight: 400; margin-bottom: 0.25rem; }
 .m-sub { font-size: 0.82rem; color: var(--sub); margin-bottom: 1.5rem; }
-.m-label { font-size: 0.75rem; font-weight: 500; color: var(--sub); display: block; margin-bottom: 5px; }
-.m-input { font-family: 'Inter', sans-serif; font-size: 0.875rem; background: var(--light); border: 1px solid var(--border); color: var(--text); border-radius: 7px; padding: 0.65rem 0.9rem; width: 100%; outline: none; margin-bottom: 0.8rem; transition: border-color 0.2s; }
+.m-label { font-size: 0.72rem; font-weight: 500; color: var(--sub); display: block; margin-bottom: 4px; }
+.m-input { font-family: 'Inter', sans-serif; font-size: 0.875rem; background: var(--light); border: 1px solid var(--border); color: var(--text); border-radius: 7px; padding: 0.6rem 0.85rem; width: 100%; outline: none; margin-bottom: 0.75rem; transition: border-color 0.15s; }
 .m-input:focus { border-color: #6b7280; }
-.m-btn { font-family: 'Inter', sans-serif; font-size: 0.875rem; font-weight: 500; color: var(--white); background: var(--text); border: none; cursor: pointer; padding: 0.75rem; width: 100%; border-radius: 7px; margin-top: 0.35rem; transition: opacity 0.2s; }
-.m-btn:hover { opacity: 0.8; }
-.m-btn:disabled { opacity: 0.45; cursor: not-allowed; }
-.m-footer { text-align: center; margin-top: 1rem; font-size: 0.8rem; color: var(--sub); }
+.m-btn { font-family: 'Inter', sans-serif; font-size: 0.875rem; font-weight: 500; color: var(--white); background: var(--text); border: none; cursor: pointer; padding: 0.7rem; width: 100%; border-radius: 7px; margin-top: 0.25rem; }
+.m-btn:hover { opacity: 0.85; }
+.m-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.m-footer { text-align: center; margin-top: 1rem; font-size: 0.78rem; color: var(--sub); }
 .m-footer a { color: var(--text); text-decoration: none; font-weight: 500; cursor: pointer; }
-.m-error { font-size: 0.78rem; color: #dc2626; margin-bottom: 0.75rem; line-height: 1.5; }
-.m-ok    { font-size: 0.78rem; color: #16a34a; margin-bottom: 0.75rem; }
-.m-divider { display: flex; align-items: center; gap: 10px; margin-bottom: 0.9rem; }
-.m-divider::before, .m-divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
-.m-divider span { font-size: 0.72rem; color: var(--muted); }
-.g-btn { font-family: 'Inter', sans-serif; font-size: 0.875rem; font-weight: 500; color: var(--text); background: var(--white); border: 1px solid var(--border); cursor: pointer; padding: 0.65rem; width: 100%; border-radius: 7px; margin-bottom: 0.9rem; display: flex; align-items: center; justify-content: center; gap: 10px; transition: background 0.2s; }
+.m-msg { font-size: 0.78rem; margin-bottom: 0.75rem; line-height: 1.5; }
+.m-err { color: #dc2626; }
+.m-ok  { color: #16a34a; }
+.m-div { display: flex; align-items: center; gap: 10px; margin-bottom: 0.85rem; }
+.m-div::before, .m-div::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.m-div span { font-size: 0.7rem; color: var(--muted); }
+.g-btn { font-family: 'Inter', sans-serif; font-size: 0.875rem; font-weight: 400; color: var(--text); background: var(--white); border: 1px solid var(--border); cursor: pointer; padding: 0.6rem; width: 100%; border-radius: 7px; margin-bottom: 0.85rem; display: flex; align-items: center; justify-content: center; gap: 9px; }
 .g-btn:hover { background: var(--light); }
-.m-forgot { text-align: right; margin-top: -0.4rem; margin-bottom: 0.9rem; }
-.m-forgot a { font-size: 0.78rem; color: var(--sub); text-decoration: none; cursor: pointer; }
-.m-forgot a:hover { color: var(--text); }
+.m-forgot { text-align: right; margin-top: -0.35rem; margin-bottom: 0.85rem; }
+.m-forgot a { font-size: 0.75rem; color: var(--sub); text-decoration: none; cursor: pointer; }
 
-/* ── RESPONSIVE ───────────────────────────────────────────────── */
-@media (max-width: 900px) {
-  :root { --pad-x: 1.5rem; }
-  .hero { grid-template-columns: 1fr; min-height: auto; padding: 8rem 1.5rem 4rem; }
-  .hero-left { padding-right: 0; margin-bottom: 2.5rem; }
-  .hero-right { padding-left: 0; border-left: none; border-top: 1px solid var(--border); padding-top: 2.5rem; }
-  .product-row { grid-template-columns: 1fr; gap: 1rem; }
-  .product-index { display: none; }
-  .product-right { flex-direction: column; align-items: flex-start; }
-  .statement, .closing { grid-template-columns: 1fr; gap: 2.5rem; }
-  .metrics { grid-template-columns: 1fr 1fr; }
-  .metric { padding: 2.5rem 1.5rem; }
-  .metric:nth-child(2) { border-right: none; }
-  .ticker-items { gap: 2rem; }
-}
-@media (max-width: 480px) {
-  .metrics { grid-template-columns: 1fr; }
-  .metric { border-right: none; border-bottom: 1px solid var(--border); }
-  footer { flex-direction: column; align-items: flex-start; }
+@media (max-width: 768px) {
+  nav { padding: 0 1.25rem; }
+  .hero { padding: 9rem 1.25rem 6rem; }
+  .product { grid-template-columns: 1fr; gap: 0.5rem; padding: 1.5rem 1.25rem; }
+  .product-status { text-align: left; }
+  footer { flex-direction: column; gap: 1rem; padding: 1.5rem 1.25rem; align-items: flex-start; }
 }
 </style>
 </head>
 <body>
 
-<!-- AUTH OVERLAY -->
 <div class="overlay" id="authOverlay">
   <div class="modal">
     <button class="modal-x" onclick="closeAuth()">×</button>
@@ -301,247 +122,102 @@ footer {
   </div>
 </div>
 
-<!-- NAV -->
 <nav>
   <a href="#" class="logo">
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-      <path d="M10 1 L11.4 8.6 L19 10 L11.4 11.4 L10 19 L8.6 11.4 L1 10 L8.6 8.6 Z" fill="#0a0a0a"/>
-    </svg>
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 1 L10.2 7.8 L17 9 L10.2 10.2 L9 17 L7.8 10.2 L1 9 L7.8 7.8 Z" fill="#0a0a0a"/></svg>
     <span class="logo-word">sirius</span>
   </a>
-  <div id="navRight">
-    <button class="nav-btn" onclick="openAuth('signup')">Get started</button>
-  </div>
+  <button class="nav-btn" onclick="openAuth('signup')">Get started</button>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
-  <div class="hero-left">
-    <div class="hero-eyebrow">AI for the real world</div>
-    <h1>We build AI that<br/>works where it<br/><em>actually matters.</em></h1>
-  </div>
-  <div class="hero-right">
-    <p class="hero-body">Sirius integrates advanced AI systems into the industries that power daily life — healthcare, hiring, and career development. Not proof-of-concepts. Not demos. Tools that people rely on every day.</p>
-    <div class="hero-cta">
-      <button class="btn-dark" onclick="openAuth('signup')">
-        Create free account
-        <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M1 6.5h11M7 2l4.5 4.5L7 11" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
-      <button class="btn-text" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">See our products →</button>
-    </div>
-    <p class="hero-note">One account. Every Sirius product. Free to start.</p>
+  <h1>AI built for<br/>the real <em>world.</em></h1>
+  <p>Sirius integrates advanced AI into the industries that matter most — healthcare, hiring, and career development.</p>
+  <div class="hero-actions">
+    <button class="btn-primary" onclick="openAuth('signup')">Create free account</button>
+    <button class="btn-ghost" onclick="openAuth('signin')">Sign in →</button>
   </div>
 </section>
 
-<!-- TICKER -->
-<div class="ticker">
-  <span class="ticker-label">Active products</span>
-  <div class="ticker-items">
-    <span class="ticker-item"><span class="ticker-dot" style="background:#00a86b;"></span>Orbit — Job search</span>
-    <span class="ticker-item"><span class="ticker-dot" style="background:#2563eb;"></span>Vett — Recruiting</span>
-    <span class="ticker-item"><span class="ticker-dot" style="background:#0891b2;"></span>Rounds — Clinical documentation</span>
-    
-  </div>
+<div class="products">
+  <a href="https://orbit.sirius-ai.co" class="product">
+    <div>
+      <div class="product-name">Orbit</div>
+      <div class="product-desc">AI job search co-pilot. Resume tailoring, cover letters, interview tracking.</div>
+    </div>
+    <div class="product-tag">Career</div>
+    <div class="product-status"><span class="dot" style="background:#00a86b;"></span>Live</div>
+  </a>
+  <a href="https://vett.sirius-ai.co" class="product">
+    <div>
+      <div class="product-name">Vett</div>
+      <div class="product-desc">AI recruiting intelligence. Find, screen, and reach the right candidates faster.</div>
+    </div>
+    <div class="product-tag">Hiring</div>
+    <div class="product-status"><span class="dot" style="background:#2563eb;"></span>Live</div>
+  </a>
+  <a href="https://rounds.sirius-ai.co" class="product">
+    <div>
+      <div class="product-name">Rounds</div>
+      <div class="product-desc">Shift intelligence for nurses. Morning briefs, handoffs, and SBAR calls — generated.</div>
+    </div>
+    <div class="product-tag">Healthcare</div>
+    <div class="product-status"><span class="dot" style="background:#e11d48;"></span>Live</div>
+  </a>
 </div>
 
-<!-- PRODUCTS -->
-<div class="products" id="products">
-
-  <a href="https://orbit.sirius-ai.co" class="product-row">
-    <span class="product-index">01</span>
-    <div class="product-main">
-      <div class="product-star" style="background:rgba(0,168,107,0.1);">
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 1 L10.2 7.8 L17 9 L10.2 10.2 L9 17 L7.8 10.2 L1 9 L7.8 7.8 Z" fill="#00a86b"/></svg>
-      </div>
-      <div class="product-name-wrap">
-        <div class="product-name">Orbit</div>
-        <div class="product-tag">Job seeking · Resume · Cover letters</div>
-      </div>
-    </div>
-    <div class="product-right">
-      <p class="product-desc">Your job search co-pilot. Tailors your resume to each role, generates cover letters in your voice, tracks every application, and coaches you through interviews.</p>
-      <span class="product-status status-live">Live</span>
-    </div>
-  </a>
-
-  <a href="https://vett.sirius-ai.co" class="product-row">
-    <span class="product-index">02</span>
-    <div class="product-main">
-      <div class="product-star" style="background:rgba(37,99,235,0.1);">
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 1 L10.2 7.8 L17 9 L10.2 10.2 L9 17 L7.8 10.2 L1 9 L7.8 7.8 Z" fill="#2563eb"/></svg>
-      </div>
-      <div class="product-name-wrap">
-        <div class="product-name">Vett</div>
-        <div class="product-tag">Recruiting · Candidate review · Hiring</div>
-      </div>
-    </div>
-    <div class="product-right">
-      <p class="product-desc">Recruiting intelligence for teams. Detects AI-generated applications, summarizes every candidate, enables blind review, and surfaces culture fit — so you hire humans, not resumes.</p>
-      <span class="product-status status-live">Live</span>
-    </div>
-  </a>
-
-  <a href="https://rounds.sirius-ai.co" class="product-row unavailable">
-    <span class="product-index">03</span>
-    <div class="product-main">
-      <div class="product-star" style="background:rgba(8,145,178,0.1);">
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 1 L10.2 7.8 L17 9 L10.2 10.2 L9 17 L7.8 10.2 L1 9 L7.8 7.8 Z" fill="#0891b2"/></svg>
-      </div>
-      <div class="product-name-wrap">
-        <div class="product-name">Rounds</div>
-        <div class="product-tag">Clinical documentation · SOAP notes · Charting</div>
-      </div>
-    </div>
-    <div class="product-right">
-      <p class="product-desc">Ambient clinical documentation for physicians. A native desktop app for Mac and Windows — listens to patient encounters, generates structured SOAP notes, and eliminates hours of after-hours charting. Download and run it. No browser required.</p>
-      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px;flex-shrink:0;">
-        <span class="product-status status-building">In development</span>
-        <span style="font-size:0.72rem;color:var(--muted);display:flex;align-items:center;gap:5px;">
-          <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M5.5 1v6M2.5 5l3 3 3-3M1 9.5h9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          Mac &amp; Windows
-        </span>
-      </div>
-    </div>
-  </a>
-
-</div>
-
-<!-- STATEMENT -->
-<section class="statement">
-  <div class="statement-left">
-    <p class="statement-label">Why we exist</p>
-    <h2>Most AI is built for<br/>people who already<br/>have <em>every advantage.</em></h2>
-  </div>
-  <div class="statement-right">
-    <div class="statement-body">
-      <p>Physicians spend <strong>4.5 hours per day</strong> on documentation. Not patient care. Documentation. That's not a technology problem — it's a deployment problem. The AI exists. No one has put it where it's needed.</p>
-      <p>Job seekers with identical qualifications to their peers get filtered out by automated systems before a human ever sees their name. Recruiters spend more time screening than hiring. These are solvable problems.</p>
-      <p>Sirius is built around a single question: <strong>where does AI create the most meaningful difference for the most people?</strong> We start there, and we build until it works.</p>
-    </div>
-  </div>
-</section>
-
-<!-- METRICS -->
-<div class="metrics">
-  <div class="metric">
-    <div class="metric-num">4.5h</div>
-    <div class="metric-label">Daily documentation burden for physicians that AI can eliminate</div>
-  </div>
-  <div class="metric">
-    <div class="metric-num">75%</div>
-    <div class="metric-label">Of qualified resumes rejected by ATS before any human review</div>
-  </div>
-  <div class="metric">
-    <div class="metric-num">$500B</div>
-    <div class="metric-label">Global HR technology market by 2030</div>
-  </div>
-  <div class="metric">
-    <div class="metric-num">$1.1T</div>
-    <div class="metric-label">Annual cost of clinical burnout and physician turnover in the US</div>
-  </div>
-</div>
-
-<!-- CLOSING -->
-<section class="closing">
-  <h2>One account.<br/><em>Every tool</em><br/>we build.</h2>
-  <div class="closing-right">
-    <p class="closing-body">Create a Sirius account today and get immediate access to Orbit and Vett. When Rounds launches, download it for Mac or Windows and sign in with the same account. One login across every product we build.</p>
-    <div class="closing-actions">
-      <button class="btn-dark" onclick="openAuth('signup')">
-        Create free account
-        <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M1 6.5h11M7 2l4.5 4.5L7 11" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
-      <button class="btn-text" onclick="openAuth('signin')">Sign in →</button>
-    </div>
-    <p class="closing-note">Free to start. No credit card required.</p>
-  </div>
-</section>
-
-<!-- FOOTER -->
 <footer>
   <a href="#" class="footer-logo">
-    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-      <path d="M7 1 L8 5.6 L13 7 L8 8.4 L7 13 L6 8.4 L1 7 L6 5.6 Z" fill="#9ca3af"/>
-    </svg>
+    <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M6.5 1 L7.4 5.1 L12 6.5 L7.4 7.9 L6.5 12 L5.6 7.9 L1 6.5 L5.6 5.1 Z" fill="#9ca3af"/></svg>
     <span class="footer-word">sirius</span>
   </a>
-  <span class="footer-copy">© 2025 Sirius AI. All rights reserved.</span>
+  <span class="footer-copy">© 2025 Sirius AI</span>
   <div class="footer-links">
     <a href="/privacy">Privacy</a>
     <a href="/terms">Terms</a>
-    <a href="mailto:samleebu12@gmail.com">Contact</a>
+    <a href="/contact">Contact</a>
   </div>
 </footer>
 
 <script>
-// ── SUPABASE ──────────────────────────────────────────────────
-// Replace with your actual values from:
-// supabase.com → project → Settings → API
 const SUPABASE_URL  = 'YOUR_SUPABASE_URL';
 const SUPABASE_ANON = 'YOUR_SUPABASE_ANON_KEY';
 const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
 
-// ── AUTH STATE ────────────────────────────────────────────────
-sb.auth.getSession().then(({ data: { session } }) => {
-  if (session?.user) setSignedIn(session.user);
-});
-sb.auth.onAuthStateChange((event, session) => {
-  if (event === 'SIGNED_IN'  && session?.user) setSignedIn(session.user);
-  if (event === 'SIGNED_OUT') setSignedOut();
+sb.auth.getSession().then(({ data: { session } }) => { if (session?.user) setSignedIn(session.user); });
+sb.auth.onAuthStateChange((e, s) => {
+  if (e === 'SIGNED_IN' && s?.user) setSignedIn(s.user);
+  if (e === 'SIGNED_OUT') setSignedOut();
 });
 
 function setSignedIn(user) {
-  const name = user.user_metadata?.name?.split(' ')[0] || user.email?.split('@')[0] || 'there';
-  document.getElementById('navRight').innerHTML = `
-    <div class="nav-signed-in">
-      <span class="nav-user">Hi, ${name}</span>
-      <button class="nav-signout" onclick="sb.auth.signOut()">Sign out</button>
-    </div>`;
+  const name = user.user_metadata?.name?.split(' ')[0] || user.email?.split('@')[0];
+  document.querySelector('.nav-btn').outerHTML = `<div style="display:flex;align-items:center;gap:10px;"><span style="font-size:0.8rem;color:#6b7280;">Hi, ${name}</span><button class="nav-btn" onclick="sb.auth.signOut()" style="background:none;color:#6b7280;border:1px solid #e5e7eb;">Sign out</button></div>`;
 }
+function setSignedOut() { location.reload(); }
 
-function setSignedOut() {
-  document.getElementById('navRight').innerHTML = `
-    <button class="nav-btn" onclick="openAuth('signup')">Get started</button>`;
-}
-
-// ── AUTH MODAL ────────────────────────────────────────────────
-document.getElementById('authOverlay').addEventListener('click', e => {
-  if (e.target === e.currentTarget) closeAuth();
-});
-
-function openAuth(mode) {
-  renderAuth(mode);
-  document.getElementById('authOverlay').classList.add('open');
-}
-function closeAuth() {
-  document.getElementById('authOverlay').classList.remove('open');
-}
+document.getElementById('authOverlay').addEventListener('click', e => { if (e.target === e.currentTarget) closeAuth(); });
+function openAuth(mode) { renderAuth(mode); document.getElementById('authOverlay').classList.add('open'); }
+function closeAuth() { document.getElementById('authOverlay').classList.remove('open'); }
 
 function renderAuth(mode) {
   document.getElementById('authContent').innerHTML = `
     <h2 class="m-title">${mode === 'signup' ? 'Create account' : 'Welcome back'}</h2>
     <p class="m-sub">${mode === 'signup' ? 'One account for every Sirius product.' : 'Sign in to your Sirius account.'}</p>
     <button class="g-btn" onclick="googleSignIn()">
-      <svg width="17" height="17" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+      <svg width="16" height="16" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
       Continue with Google
     </button>
-    <div class="m-divider"><span>or</span></div>
-    ${mode === 'signup' ? `<label class="m-label">Full name</label><input class="m-input" id="mName" placeholder="Your name" autocomplete="name"/>` : ''}
+    <div class="m-div"><span>or</span></div>
+    ${mode === 'signup' ? `<label class="m-label">Full name</label><input class="m-input" id="mName" placeholder="Your name"/>` : ''}
     <label class="m-label">Email</label>
-    <input class="m-input" id="mEmail" type="email" placeholder="you@example.com" autocomplete="email"/>
+    <input class="m-input" id="mEmail" type="email" placeholder="you@example.com"/>
     <label class="m-label">Password</label>
-    <input class="m-input" id="mPass" type="password" placeholder="••••••••"
-      autocomplete="${mode === 'signup' ? 'new-password' : 'current-password'}"
-      onkeydown="if(event.key==='Enter')doAuth('${mode}')"/>
+    <input class="m-input" id="mPass" type="password" placeholder="••••••••" onkeydown="if(event.key==='Enter')doAuth('${mode}')"/>
     ${mode === 'signin' ? `<div class="m-forgot"><a onclick="renderForgot()">Forgot password?</a></div>` : ''}
     <div id="mMsg"></div>
-    <button class="m-btn" id="mBtn" onclick="doAuth('${mode}')">
-      ${mode === 'signup' ? 'Create account' : 'Sign in'}
-    </button>
-    <p class="m-footer">
-      ${mode === 'signup' ? 'Already have an account? ' : 'New here? '}
-      <a onclick="renderAuth('${mode === 'signup' ? 'signin' : 'signup'}')">${mode === 'signup' ? 'Sign in' : 'Create account'}</a>
-    </p>`;
+    <button class="m-btn" id="mBtn" onclick="doAuth('${mode}')">${mode === 'signup' ? 'Create account' : 'Sign in'}</button>
+    <p class="m-footer">${mode === 'signup' ? 'Already have an account? ' : 'New here? '}<a onclick="renderAuth('${mode === 'signup' ? 'signin' : 'signup'}')">${mode === 'signup' ? 'Sign in' : 'Create account'}</a></p>`;
 }
 
 function renderForgot() {
@@ -559,28 +235,27 @@ async function doAuth(mode) {
   const email = document.getElementById('mEmail')?.value?.trim();
   const pass  = document.getElementById('mPass')?.value;
   const name  = document.getElementById('mName')?.value?.trim();
-  const btn   = document.getElementById('mBtn');
-  const msg   = document.getElementById('mMsg');
-  if (!email || !pass) { msg.innerHTML = '<p class="m-error">Please fill in all fields.</p>'; return; }
+  const btn = document.getElementById('mBtn'), msg = document.getElementById('mMsg');
+  if (!email || !pass) { msg.innerHTML = '<p class="m-msg m-err">Please fill in all fields.</p>'; return; }
   btn.disabled = true; btn.textContent = 'Please wait…'; msg.innerHTML = '';
   if (mode === 'signup') {
     const { error } = await sb.auth.signUp({ email, password: pass, options: { data: { name: name || '' } } });
-    if (error) { msg.innerHTML = `<p class="m-error">${error.message}</p>`; btn.disabled = false; btn.textContent = 'Create account'; return; }
-    msg.innerHTML = '<p class="m-ok">Check your email to confirm, then sign in.</p>'; btn.textContent = 'Done';
+    if (error) { msg.innerHTML = `<p class="m-msg m-err">${error.message}</p>`; btn.disabled = false; btn.textContent = 'Create account'; return; }
+    msg.innerHTML = '<p class="m-msg m-ok">Check your email to confirm.</p>'; btn.textContent = 'Done';
   } else {
     const { error } = await sb.auth.signInWithPassword({ email, password: pass });
-    if (error) { msg.innerHTML = `<p class="m-error">${error.message}</p>`; btn.disabled = false; btn.textContent = 'Sign in'; return; }
+    if (error) { msg.innerHTML = `<p class="m-msg m-err">${error.message}</p>`; btn.disabled = false; btn.textContent = 'Sign in'; return; }
     closeAuth();
   }
 }
 
 async function doReset() {
   const email = document.getElementById('mEmail')?.value?.trim();
-  const msg   = document.getElementById('mMsg');
-  if (!email) { msg.innerHTML = '<p class="m-error">Enter your email first.</p>'; return; }
+  const msg = document.getElementById('mMsg');
+  if (!email) { msg.innerHTML = '<p class="m-msg m-err">Enter your email first.</p>'; return; }
   const { error } = await sb.auth.resetPasswordForEmail(email, { redirectTo: `${window.location.origin}/reset-password` });
-  if (error) { msg.innerHTML = `<p class="m-error">${error.message}</p>`; return; }
-  msg.innerHTML = '<p class="m-ok">Reset link sent. Check your inbox.</p>';
+  if (error) { msg.innerHTML = `<p class="m-msg m-err">${error.message}</p>`; return; }
+  msg.innerHTML = '<p class="m-msg m-ok">Reset link sent.</p>';
 }
 
 async function googleSignIn() {
